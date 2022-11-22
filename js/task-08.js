@@ -1,27 +1,32 @@
-const inputForm = document.querySelector(".login-form");
+const inputForm = document.querySelector('.login-form');
 const inputDataObj = {};
 
-const onSubmitValidation = (event) => {
+const onSubmitValidation = event => {
   event.preventDefault();
 
-  const inputEmailValue = inputForm.elements.email.value;
-  const inputPasswordlValue = inputForm.elements.password.value;
+  const {
+    elements: { email, password },
+  } = inputForm;
 
-  inputForm.reset();
+  const inputEmailValue = email.value;
+  const inputPasswordlValue = password.value;
 
   if (!inputPasswordlValue || !inputEmailValue) {
-    alert("Все поля должны быть заполнены!");
+    alert('Все поля должны быть заполнены!');
+    inputForm.reset();
     return;
   }
 
-  inputDataObj[inputForm.elements.email.type] = inputEmailValue;
-  inputDataObj[inputForm.elements.password.type] = inputPasswordlValue;
+  inputDataObj['email'] = inputEmailValue;
+  inputDataObj.password = inputPasswordlValue;
 
   console.log(inputDataObj);
+
+  inputForm.reset();
 };
 
-inputForm.addEventListener("submit", onSubmitValidation);
-// Обработка отправки формы form.login - form 
+inputForm.addEventListener('submit', onSubmitValidation);
+// Обработка отправки формы form.login - form
 // должна быть по событию submit.
 // При отправке формы страница не должна перезагружаться.
 // Если в форме есть незаполненные поля,
@@ -31,5 +36,5 @@ inputForm.addEventListener("submit", onSubmitValidation);
 // собери значения полей в обьект, где имя поля будет именем свойства,
 // а значение поля - значением свойства.
 // Для доступа к элементам формы используй свойство elements.
-// Выведи обьект с введенными данными в консоль 
+// Выведи обьект с введенными данными в консоль
 // и очисти значения полей формы методом reset.

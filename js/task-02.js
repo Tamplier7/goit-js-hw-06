@@ -1,30 +1,31 @@
-const ingredients = [
-  'Potatoes',
-  'Mushrooms',
-  'Garlic',
-  'Tomatos',
-  'Herbs',
-  'Condiments',
-];
+const ingredients = ['Potatoes', 'Mushrooms', 'Garlic', 'Tomatos', 'Herbs', 'Condiments'];
 
 const ingredientsList = document.querySelector('#ingredients');
 
-const ingredientsLi = ingredientsEl => {
-  const ingredientItem = document.createElement('li');
-  ingredientItem.textContent = ingredientsEl;
-  ingredientItem.classList.add('item');
-  console.log(ingredientItem)
-  return ingredientItem;
-}
+// const ingredientsLi = ingredientsEl => {
+//   const ingredientItem = document.createElement('li');
+//   ingredientItem.textContent = ingredientsEl;
+//   ingredientItem.classList.add('item');
+//   console.log(ingredientItem)
+//   return ingredientItem;
+// }
 
-const ingredientItems = ingredients.map(ingredientsLi);
+// const ingredientItems = ingredients.map(ingredientsLi);
 
-ingredientsList.append(...ingredientItems);
-console.log(ingredientItems);
+// ingredientsList.append(...ingredientItems);
+// console.log(ingredientItems);
+
+const ingredientsElements = ingredients.map(incEl => {
+  const ingredientElement = document.createElement('li');
+  ingredientElement.textContent = incEl;
+  ingredientElement.classList.add('item');
+  return ingredientElement;
+});
+ingredientsList.append(...ingredientsElements);
 
 // Напиши скрипт, который для каждого элемента массива ingredients:
 
-// Создаст отдельный элемент < li >.Обзательно используй 
+// Создаст отдельный элемент < li >.Обзательно используй
 // метод document.createElement().
 // Добавит название ингредиента как его текстовое содержимое.
 // Добавит элементу класс item.

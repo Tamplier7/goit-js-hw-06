@@ -13,14 +13,23 @@ const images = [
   },
 ];
 
-const galleryElement = document.querySelector(".gallery")
+const galleryElement = document.querySelector('.gallery');
 
-const galleryItemElement = images.map(element => `<li class = image> <img
-src=${element.url} alt=${element.alt} width = 740px> </li>`)
-  .join('');
+const galleryItemElement = images.reduce((acc, item) => {
+  return (acc += `<li> <img src=${item.url} alt=${item.alt} width=740px> </li>`);
+}, '');
+// const galleryItemElement = images.map(element => `<li class = image> <img
+// src=${element.url} alt=${element.alt} width = 740px> </li>`)
+//   .join('');
 
-galleryElement.style.justifyContent = "space-between";
+galleryElement.style.justifyContent = 'space-between';
 
 galleryElement.insertAdjacentHTML('beforeend', galleryItemElement);
 
+// // Используй массив объектов images для создания элементов
+// <img> вложенных в <li>. Для создания разметки используй шаблонные
+// строки и метод insertAdjacentHTML().
 
+// // Все элементы галереи должны добавляться в DOM за одну операцию вставки.
+//   // Добавь минимальное оформление галереи флексбоксами или гридами
+//   через CSS классы.
